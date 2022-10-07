@@ -2,12 +2,14 @@ package api
 
 import (
 	"fmt"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
 	db "simple-bank/db/sqlc"
 	"simple-bank/token"
 	"simple-bank/util"
+	"time"
 )
 
 // Server serves HTTP requests for our banking service
@@ -37,6 +39,28 @@ func NewServer(config util.Config, store db.Store) (*Server, error) {
 }
 func (server *Server) setupRouter() {
 	router := gin.Default()
+
+	router.Use(cors.New(cors.Config{
+		// アクセス許可するオリジン
+		AllowOrigins: []string{
+			//"https://localhost",
+			"http://localhost:3000",
+		},
+		// アクセス許可するHTTPメソッド
+		AllowMethods: []string{
+			"POST",
+			"GET",
+			"OPTIONS",
+		},
+		// 許可するHTTPリクエストヘッダ
+		AllowHeaders: []string{
+			"Content-Type",
+		},
+		// cookieなどの情報を必要とするかどうか
+		AllowCredentials: true,
+		// preflightリクエストの結果をキャッシュする時間
+		MaxAge: 24 * time.Hour,
+	}))
 	// add routes to router
 	router.POST("/users", server.createUser)
 	router.POST("users/login", server.loginUser)
