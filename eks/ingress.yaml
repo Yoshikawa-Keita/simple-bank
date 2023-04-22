@@ -14,7 +14,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: "api.freesimplebank.com"
+    - host: "api.freesimplebank.net"
       http:
         paths:
           - pathType: Prefix
@@ -26,5 +26,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - api.freesimplebank.com
+        - api.freesimplebank.net
       secretName: simple-bank-api-cert
