@@ -25,7 +25,7 @@
       "post": {
         "summary": "Create new user",
         "description": "Use this API to create a new user",
-        "operationId": "SimpleBank_Createuser",
+        "operationId": "SimpleBank_CreateUser",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -59,7 +59,7 @@
       "post": {
         "summary": "Login user",
         "description": "Use this API to login user and get access token \u0026 refresh token",
-        "operationId": "SimpleBank_Loginuser",
+        "operationId": "SimpleBank_LoginUser",
         "responses": {
           "200": {
             "description": "A successful response.",

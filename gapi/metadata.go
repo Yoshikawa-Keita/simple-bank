@@ -35,6 +35,7 @@ func (server *Server) extractMetadata(ctx context.Context) *Metadata {
 		}
 	}
 
+	// for grpc gateway
 	if p, ok := peer.FromContext(ctx); ok {
 		mtdt.ClientIP = p.Addr.String()
 	}

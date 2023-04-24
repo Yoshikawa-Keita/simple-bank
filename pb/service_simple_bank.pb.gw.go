@@ -31,7 +31,7 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
-func request_SimpleBank_Createuser_0(ctx context.Context, marshaler runtime.Marshaler, client SimpleBankClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_SimpleBank_CreateUser_0(ctx context.Context, marshaler runtime.Marshaler, client SimpleBankClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CreateUserRequest
 	var metadata runtime.ServerMetadata
 
@@ -43,12 +43,12 @@ func request_SimpleBank_Createuser_0(ctx context.Context, marshaler runtime.Mars
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.Createuser(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.CreateUser(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_SimpleBank_Createuser_0(ctx context.Context, marshaler runtime.Marshaler, server SimpleBankServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_SimpleBank_CreateUser_0(ctx context.Context, marshaler runtime.Marshaler, server SimpleBankServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq CreateUserRequest
 	var metadata runtime.ServerMetadata
 
@@ -60,7 +60,7 @@ func local_request_SimpleBank_Createuser_0(ctx context.Context, marshaler runtim
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.Createuser(ctx, &protoReq)
+	msg, err := server.CreateUser(ctx, &protoReq)
 	return msg, metadata, err
 
 }
@@ -99,7 +99,7 @@ func local_request_SimpleBank_UpdateUser_0(ctx context.Context, marshaler runtim
 
 }
 
-func request_SimpleBank_Loginuser_0(ctx context.Context, marshaler runtime.Marshaler, client SimpleBankClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_SimpleBank_LoginUser_0(ctx context.Context, marshaler runtime.Marshaler, client SimpleBankClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq LoginUserRequest
 	var metadata runtime.ServerMetadata
 
@@ -111,12 +111,12 @@ func request_SimpleBank_Loginuser_0(ctx context.Context, marshaler runtime.Marsh
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.Loginuser(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.LoginUser(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_SimpleBank_Loginuser_0(ctx context.Context, marshaler runtime.Marshaler, server SimpleBankServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_SimpleBank_LoginUser_0(ctx context.Context, marshaler runtime.Marshaler, server SimpleBankServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq LoginUserRequest
 	var metadata runtime.ServerMetadata
 
@@ -128,7 +128,7 @@ func local_request_SimpleBank_Loginuser_0(ctx context.Context, marshaler runtime
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.Loginuser(ctx, &protoReq)
+	msg, err := server.LoginUser(ctx, &protoReq)
 	return msg, metadata, err
 
 }
@@ -139,7 +139,7 @@ func local_request_SimpleBank_Loginuser_0(ctx context.Context, marshaler runtime
 // Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterSimpleBankHandlerFromEndpoint instead.
 func RegisterSimpleBankHandlerServer(ctx context.Context, mux *runtime.ServeMux, server SimpleBankServer) error {
 
-	mux.Handle("POST", pattern_SimpleBank_Createuser_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_SimpleBank_CreateUser_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -147,12 +147,12 @@ func RegisterSimpleBankHandlerServer(ctx context.Context, mux *runtime.ServeMux,
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/pb.SimpleBank/Createuser", runtime.WithHTTPPathPattern("/v1/create_user"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/pb.SimpleBank/CreateUser", runtime.WithHTTPPathPattern("/v1/create_user"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_SimpleBank_Createuser_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_SimpleBank_CreateUser_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -160,7 +160,7 @@ func RegisterSimpleBankHandlerServer(ctx context.Context, mux *runtime.ServeMux,
 			return
 		}
 
-		forward_SimpleBank_Createuser_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_SimpleBank_CreateUser_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -189,7 +189,7 @@ func RegisterSimpleBankHandlerServer(ctx context.Context, mux *runtime.ServeMux,
 
 	})
 
-	mux.Handle("POST", pattern_SimpleBank_Loginuser_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_SimpleBank_LoginUser_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -197,12 +197,12 @@ func RegisterSimpleBankHandlerServer(ctx context.Context, mux *runtime.ServeMux,
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/pb.SimpleBank/Loginuser", runtime.WithHTTPPathPattern("/v1/login_user"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/pb.SimpleBank/LoginUser", runtime.WithHTTPPathPattern("/v1/login_user"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_SimpleBank_Loginuser_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_SimpleBank_LoginUser_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -210,7 +210,7 @@ func RegisterSimpleBankHandlerServer(ctx context.Context, mux *runtime.ServeMux,
 			return
 		}
 
-		forward_SimpleBank_Loginuser_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_SimpleBank_LoginUser_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -255,25 +255,25 @@ func RegisterSimpleBankHandler(ctx context.Context, mux *runtime.ServeMux, conn 
 // "SimpleBankClient" to call the correct interceptors.
 func RegisterSimpleBankHandlerClient(ctx context.Context, mux *runtime.ServeMux, client SimpleBankClient) error {
 
-	mux.Handle("POST", pattern_SimpleBank_Createuser_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_SimpleBank_CreateUser_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/pb.SimpleBank/Createuser", runtime.WithHTTPPathPattern("/v1/create_user"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/pb.SimpleBank/CreateUser", runtime.WithHTTPPathPattern("/v1/create_user"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_SimpleBank_Createuser_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_SimpleBank_CreateUser_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_SimpleBank_Createuser_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_SimpleBank_CreateUser_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -299,25 +299,25 @@ func RegisterSimpleBankHandlerClient(ctx context.Context, mux *runtime.ServeMux,
 
 	})
 
-	mux.Handle("POST", pattern_SimpleBank_Loginuser_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_SimpleBank_LoginUser_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/pb.SimpleBank/Loginuser", runtime.WithHTTPPathPattern("/v1/login_user"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/pb.SimpleBank/LoginUser", runtime.WithHTTPPathPattern("/v1/login_user"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_SimpleBank_Loginuser_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_SimpleBank_LoginUser_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_SimpleBank_Loginuser_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_SimpleBank_LoginUser_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -325,17 +325,17 @@ func RegisterSimpleBankHandlerClient(ctx context.Context, mux *runtime.ServeMux,
 }
 
 var (
-	pattern_SimpleBank_Createuser_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "create_user"}, ""))
+	pattern_SimpleBank_CreateUser_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "create_user"}, ""))
 
 	pattern_SimpleBank_UpdateUser_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "update_user"}, ""))
 
-	pattern_SimpleBank_Loginuser_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "login_user"}, ""))
+	pattern_SimpleBank_LoginUser_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "login_user"}, ""))
 )
 
 var (
-	forward_SimpleBank_Createuser_0 = runtime.ForwardResponseMessage
+	forward_SimpleBank_CreateUser_0 = runtime.ForwardResponseMessage
 
 	forward_SimpleBank_UpdateUser_0 = runtime.ForwardResponseMessage
 
-	forward_SimpleBank_Loginuser_0 = runtime.ForwardResponseMessage
+	forward_SimpleBank_LoginUser_0 = runtime.ForwardResponseMessage
 )

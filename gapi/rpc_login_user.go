@@ -13,7 +13,7 @@ import (
 	"simple-bank/val"
 )
 
-func (server *Server) Loginuser(ctx context.Context, req *pb.LoginUserRequest) (*pb.LoginUserResponse, error) {
+func (server *Server) LoginUser(ctx context.Context, req *pb.LoginUserRequest) (*pb.LoginUserResponse, error) {
 	violations := validateLoginUserRequest(req)
 	if violations != nil {
 		return nil, invalidArgumentError(violations)
